@@ -11,4 +11,11 @@ export * from './billingplans.controller';
 export * from './smsdetails.controller';
 export * from './sent.controller';
 export * from './sendqueue.controller';
-export * from './mpesatransactions.controller';
+
+export * from './smsdump.controller';
+export * from './smstemplates.controller';
+export * from './userinfo.controller';
+export * from './radcheck.controller';
+export * from './radusergroup.controller';
+export * from './userbillinfo.controller';
+export * from './retrieval.controller';

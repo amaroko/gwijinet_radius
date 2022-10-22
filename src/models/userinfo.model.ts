@@ -4,10 +4,10 @@ import {Entity, model, property} from '@loopback/repository';
 export class Userinfo extends Entity {
   @property({
     type: 'number',
-    required: true,
+    required: false,
+    id: true,
     precision: 10,
     scale: 0,
-    id: 1,
     mysql: {columnName: 'id', dataType: 'int', dataLength: null, dataPrecision: 10, dataScale: 0, nullable: 'N'},
   })
   id: number;

@@ -4,6 +4,18 @@ import {Entity, model, property} from '@loopback/repository';
   settings: {idInjection: false, mysql: {schema: 'radius', table: 'radusergroup'}}
 })
 export class Radusergroup extends Entity {
+
+  @property({
+    type: 'number',
+    required: false,
+    id: true,
+    precision: 10,
+    scale: 0,
+    mysql: {columnName: 'id', dataType: 'int', dataLength: null, dataPrecision: 10, dataScale: 0, nullable: 'N'},
+  })
+  id: number;
+
+
   @property({
     type: 'string',
     required: true,

@@ -5,7 +5,7 @@ const config = {
   name: 'mysql',
   connector: 'mysql',
   url: '',
-  host: 'billing.gwijinet.net',
+  host: 'aaa.gwijinet.net',
   port: 3306,
   user: 'radius',
   password: 'Somestrongpassword_Gw1j12022',

@@ -61,6 +61,58 @@ export class Temporaryclients extends Entity {
   })
   package: string;
 
+
+  @property({
+    type: 'string',
+    required: true,
+    length: 32,
+    mysql: {columnName: 'billinginfo', dataType: 'varchar', dataLength: 32, dataPrecision: null, dataScale: null, nullable: 'Y'},
+  })
+  billinginfo: boolean;
+
+  @property({
+    type: 'string',
+    required: true,
+    length: 32,
+    mysql: {columnName: 'planname', dataType: 'varchar', dataLength: 32, dataPrecision: null, dataScale: null, nullable: 'Y'},
+  })
+  planname: string;
+
+  @property({
+    type: 'string',
+    required: true,
+    length: 32,
+    mysql: {columnName: 'contactperson', dataType: 'varchar', dataLength: 32, dataPrecision: null, dataScale: null, nullable: 'Y'},
+  })
+  contactperson: string;
+
+  @property({
+    type: 'string',
+    required: true,
+    length: 32,
+    mysql: {columnName: 'address', dataType: 'varchar', dataLength: 32, dataPrecision: null, dataScale: null, nullable: 'Y'},
+  })
+  address: string;
+
+
+  @property({
+    type: 'string',
+    required: true,
+    length: 32,
+    mysql: {columnName: 'emailinvoice', dataType: 'varchar', dataLength: 32, dataPrecision: null, dataScale: null, nullable: 'Y'},
+  })
+  emailinvoice: string;
+
+
+  @property({
+    type: 'string',
+    required: true,
+    length: 32,
+    mysql: {columnName: 'company', dataType: 'varchar', dataLength: 32, dataPrecision: null, dataScale: null, nullable: 'Y'},
+  })
+  company: string;
+
+
   @property({
     type: 'string',
     required: true,

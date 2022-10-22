@@ -141,4 +141,8 @@ export * from './autosms.model';
 export * from './smsdetails.model';
 export * from './sent.model';
 export * from './sendqueue.model';
-export * from './mpesatransactions.model';
+
+export * from './smsdump.model';
+export * from './smstemplates.model';
+
+export * from './retrieval.model';
