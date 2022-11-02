@@ -89,6 +89,13 @@ export class Retrieval extends Entity {
   })
   FirstName?: never;
 
+  @property({
+    type: 'string',
+    length: 400,
+    mysql: {columnName: 'systemtime', dataType: 'varchar', dataLength: 400, dataPrecision: null, dataScale: null, nullable: 'Y'},
+  })
+  systemtime?: never;
+
   // Define well-known properties here
 
   // Indexer property to allow additional data

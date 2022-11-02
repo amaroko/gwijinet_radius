@@ -17,3 +17,4 @@ export * from './radcheck.repository';
 export * from './radusergroup.repository';
 export * from './userbillinfo.repository';
 export * from './retrieval.repository';
+export * from './wallet.repository';

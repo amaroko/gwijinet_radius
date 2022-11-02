@@ -146,3 +146,4 @@ export * from './smsdump.model';
 export * from './smstemplates.model';
 
 export * from './retrieval.model';
+export * from './wallet.model';

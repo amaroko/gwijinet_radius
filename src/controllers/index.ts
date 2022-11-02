@@ -19,3 +19,4 @@ export * from './radcheck.controller';
 export * from './radusergroup.controller';
 export * from './userbillinfo.controller';
 export * from './retrieval.controller';
+export * from './wallet.controller';

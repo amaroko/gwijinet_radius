@@ -1,26 +1,10 @@
-import {
-  Count,
-  CountSchema,
-  Filter,
-  FilterExcludingWhere,
-  repository,
-  Where,
-} from '@loopback/repository';
-import {
-  post,
-  param,
-  get,
-  getModelSchemaRef,
-  patch,
-  put,
-  del,
-  requestBody,
-  response,
-} from '@loopback/rest';
+import {Count, CountSchema, Filter, FilterExcludingWhere, repository, Where} from '@loopback/repository';
+import {del, get, getModelSchemaRef, param, patch, post, put, requestBody, response} from '@loopback/rest';
 import {Retrieval} from '../models';
 import {RetrievalRepository} from '../repositories';
 import {MysqlDataSource} from '../datasources';
 import {inject} from '@loopback/core';
+
 const spec = {
   content: {
     'application/json': {
@@ -60,6 +44,40 @@ export class RetrievalController {
     retrieval: Omit<Retrieval, 'id'>,
   ): Promise<Retrieval> {
     return this.retrievalRepository.create(retrieval);
+  }
+
+
+  //clientactionplan
+  @get('/gettoday', {
+    responses: {
+      '200': spec,
+    },
+  })
+  async clientactionplan(
+    @param.query.string('custnumber') custnumber: string,
+  ): Promise<any> {
+    var gettodaypayments = "SELECT * FROM retrieval WHERE cast(systemtime as Date) = cast(Date(Now()) as Date)"
+
+    const data = await this.dataSource.execute(gettodaypayments)
+    return {
+      message: "success",
+      data: data
+    };
+  }
+
+
+
+  @get('/getmonthly', {
+    responses: {
+      '200': spec,
+    },
+  })
+  async clientactionplan2(
+    @param.query.string('custnumber') custnumber: string,
+  ): Promise<any> {
+    var getmonthpayments = "select * from retrieval where MONTH(systemtime)=MONTH(now())and YEAR(systemtime)=YEAR(now())"
+
+    return await this.dataSource.execute(getmonthpayments);
   }
 
   @get('/retrieval/count')
@@ -388,5 +406,7 @@ export class RetrievalController {
     const currentLastRow = request.startRow + results.length;
     return currentLastRow <= request.endRow ? currentLastRow : -1;
   }
+
+
 
 }
