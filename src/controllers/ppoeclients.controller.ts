@@ -92,6 +92,27 @@ export class PpoeclientsController {
     return this.ppoeclientsRepository.find(filter);
   }
 
+
+
+  // gets 3 days reminder
+  @get('/ppoelist', {
+    responses: {
+      '200': spec,
+    },
+  })
+  async getppoelist(
+    @param.query.string('attribute') attribute: string,
+  ): Promise<any> {
+    var sql = "select * ppoelist";
+
+
+    const data = await this.dataSource.execute(sql)
+    return data
+  }
+
+
+
+
   @patch('/ppoeclients')
   @response(200, {
     description: 'Ppoeclients PATCH success count',
@@ -166,15 +187,15 @@ export class PpoeclientsController {
 
 
   // gets expired today
-  @get('/autosms/getppoelist', {
+  @get('/getusername', {
     responses: {
       '200': spec,
     },
   })
-  async getppoelist(
-    // @param.query.string('attribute') attribute: string,
+  async getusername(
+    @param.query.string('username') username: string,
   ): Promise<any> {
-    var sql = "select * from ppoelist";
+    var sql = "select * from ppoelist where username = '" + username + "'";
 
 
     const data = await this.dataSource.execute(sql)
