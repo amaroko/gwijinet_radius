@@ -19,11 +19,27 @@ import {
 } from '@loopback/rest';
 import {Radcheck} from '../models';
 import {RadcheckRepository} from '../repositories';
-
+import {MysqlDataSource} from '../datasources';
+import {inject} from '@loopback/core';
+const spec = {
+  content: {
+    'application/json': {
+      schema: {
+        type: 'object',
+        properties: {
+          message: {
+            type: 'string',
+          },
+        },
+      },
+    },
+  },
+};
 export class RadcheckController {
   constructor(
     @repository(RadcheckRepository)
     public radcheckRepository : RadcheckRepository,
+    @inject('datasources.mysql') public dataSource: MysqlDataSource,
   ) {}
 
   @post('/radcheck')
@@ -147,4 +163,41 @@ export class RadcheckController {
   async deleteById(@param.path.number('id') id: number): Promise<void> {
     await this.radcheckRepository.deleteById(id);
   }
+
+  // get active subscriptions
+  @get('/getactivesubscriptions', {
+    responses: {
+      '200': spec,
+    },
+  })
+  async getusername(
+    @param.query.string('username') username: string,
+  ): Promise<any> {
+    var sql = "select count(*) as active from radcheck where attribute like '%Exp%' and STR_TO_DATE(value, '%d %M %Y') >= NOW()";
+
+
+    const data = await this.dataSource.execute(sql)
+    return data
+  }
+
+
+
+  // get inactive subscriptions
+  @get('/getinactivesubscriptions', {
+    responses: {
+      '200': spec,
+    },
+  })
+  async getinactive(
+    @param.query.string('username') username: string,
+  ): Promise<any> {
+    var sql = "select count(*) as active from radcheck where attribute like '%Exp%' and STR_TO_DATE(value, '%d %M %Y') <= NOW()";
+
+
+    const data = await this.dataSource.execute(sql)
+    return data
+  }
+
+
+
 }

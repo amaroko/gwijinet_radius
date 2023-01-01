@@ -37,7 +37,7 @@ export class OperatorsController {
         'application/json': {
           schema: getModelSchemaRef(Operators, {
             title: 'NewOperators',
-            exclude: ['id'],
+            // exclude: ['id'],
           }),
         },
       },

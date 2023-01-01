@@ -19,11 +19,28 @@ import {
 } from '@loopback/rest';
 import {Userinfo} from '../models';
 import {UserinfoRepository} from '../repositories';
+import {MysqlDataSource} from '../datasources';
+import {inject} from '@loopback/core';
+const spec = {
+  content: {
+    'application/json': {
+      schema: {
+        type: 'object',
+        properties: {
+          message: {
+            type: 'string',
+          },
+        },
+      },
+    },
+  },
+};
 
 export class UserinfoController {
   constructor(
     @repository(UserinfoRepository)
     public userinfoRepository : UserinfoRepository,
+    @inject('datasources.mysql') public dataSource: MysqlDataSource,
   ) {}
 
   @post('/userinfo')
@@ -149,7 +166,21 @@ export class UserinfoController {
   }
 
 
+  // gets client info for referal purposes
+  @get('/userinfo/forreferral', {
+    responses: {
+      '200': spec,
+    },
+  })
+  async get3reminder(
+    @param.query.string('attribute') attribute: string,
+  ): Promise<any> {
+    var sql = "select username, firstname, lastname, mobilephone from userinfo";
 
+
+    const data = await this.dataSource.execute(sql)
+    return data
+  }
 
 
 

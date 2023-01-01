@@ -94,7 +94,7 @@ export class RetrievalController {
   async clientactionplan3(
     @param.query.string('custnumber') custnumber: string,
   ): Promise<any> {
-    var getmonthexpectedpayments = "SELECT radius.getexpected.id,radius.getexpected.username,radius.getexpected.attribute,radius.getexpected.op, radius.getexpected.value,radius.smsdetails.monthlycost FROM getexpected left join  smsdetails on radius.getexpected.username=radius.smsdetails.username where MONTH(str_to_date(value, '%d %M %Y'))=MONTH(now())and YEAR(str_to_date(value, '%d %M %Y'))=YEAR(now())"
+    var getmonthexpectedpayments = "select * from monthlyexpectedmoney WHERE MONTH(datecptured) = MONTH(CURRENT_DATE()) AND YEAR(datecptured) = YEAR(CURRENT_DATE())"
 
     return await this.dataSource.execute(getmonthexpectedpayments);
   }

@@ -147,3 +147,10 @@ export * from './smstemplates.model';
 
 export * from './retrieval.model';
 export * from './wallet.model';
+export * from './serviceplancount.model';
+export * from './usertitles.model';
+export * from './todayexpectedmoney.model';
+export * from './categories.model';
+export * from './item.model';
+export * from './employees.model';
+export * from './suppliers.model';

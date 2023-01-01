@@ -60,6 +60,7 @@ npm run lint:fix
 - `npm run openapi-spec`: Generate OpenAPI spec into a file
 - `npm run docker:build`: Build a Docker image for this application
 - `npm run docker:run`: Run this application inside a Docker container
+- lb4 discover --schema db   to create new models
 
 ## Tests
 

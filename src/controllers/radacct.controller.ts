@@ -17,10 +17,10 @@ import {
   requestBody,
   response,
 } from '@loopback/rest';
-import {Ppoeclients} from '../models';
-import {PpoeclientsRepository} from '../repositories';
-import {inject} from '@loopback/core';
+import {Radacct} from '../models';
+import {RadacctRepository} from '../repositories';
 import {MysqlDataSource} from '../datasources';
+import {inject} from '@loopback/core';
 const spec = {
   content: {
     'application/json': {
@@ -35,159 +35,137 @@ const spec = {
     },
   },
 };
-export class PpoeclientsController {
+export class RadacctController {
   constructor(
+    @repository(RadacctRepository)
+    public radacctRepository : RadacctRepository,
     @inject('datasources.mysql') public dataSource: MysqlDataSource,
-    @repository(PpoeclientsRepository)
-    public ppoeclientsRepository : PpoeclientsRepository,
   ) {}
 
-  @post('/ppoeclients')
+  @post('/radacct')
   @response(200, {
-    description: 'Ppoeclients model instance',
-    content: {'application/json': {schema: getModelSchemaRef(Ppoeclients)}},
+    description: 'Radacct model instance',
+    content: {'application/json': {schema: getModelSchemaRef(Radacct)}},
   })
   async create(
     @requestBody({
       content: {
         'application/json': {
-          schema: getModelSchemaRef(Ppoeclients, {
-            title: 'NewPpoeclients',
+          schema: getModelSchemaRef(Radacct, {
+            title: 'NewRadacct',
             exclude: ['id'],
           }),
         },
       },
     })
-    ppoeclients: Omit<Ppoeclients, 'id'>,
-  ): Promise<Ppoeclients> {
-    return this.ppoeclientsRepository.create(ppoeclients);
+    radacct: Omit<Radacct, 'id'>,
+  ): Promise<Radacct> {
+    return this.radacctRepository.create(radacct);
   }
 
-  @get('/ppoeclients/count')
+  @get('/radacct/count')
   @response(200, {
-    description: 'Ppoeclients model count',
+    description: 'Radacct model count',
     content: {'application/json': {schema: CountSchema}},
   })
   async count(
-    @param.where(Ppoeclients) where?: Where<Ppoeclients>,
+    @param.where(Radacct) where?: Where<Radacct>,
   ): Promise<Count> {
-    return this.ppoeclientsRepository.count(where);
+    return this.radacctRepository.count(where);
   }
 
-  @get('/ppoeclients')
+  @get('/radacct')
   @response(200, {
-    description: 'Array of Ppoeclients model instances',
+    description: 'Array of Radacct model instances',
     content: {
       'application/json': {
         schema: {
           type: 'array',
-          items: getModelSchemaRef(Ppoeclients, {includeRelations: true}),
+          items: getModelSchemaRef(Radacct, {includeRelations: true}),
         },
       },
     },
   })
   async find(
-    @param.filter(Ppoeclients) filter?: Filter<Ppoeclients>,
-  ): Promise<Ppoeclients[]> {
-    return this.ppoeclientsRepository.find(filter);
+    @param.filter(Radacct) filter?: Filter<Radacct>,
+  ): Promise<Radacct[]> {
+    return this.radacctRepository.find(filter);
   }
 
-
-
-  // gets 3 days reminder
-  @get('/ppoelist', {
-    responses: {
-      '200': spec,
-    },
-  })
-  async getppoelist(
-    @param.query.string('attribute') attribute: string,
-  ): Promise<any> {
-    var sql = "select * ppoelist";
-
-
-    const data = await this.dataSource.execute(sql)
-    return data
-  }
-
-
-
-
-  @patch('/ppoeclients')
+  @patch('/radacct')
   @response(200, {
-    description: 'Ppoeclients PATCH success count',
+    description: 'Radacct PATCH success count',
     content: {'application/json': {schema: CountSchema}},
   })
   async updateAll(
     @requestBody({
       content: {
         'application/json': {
-          schema: getModelSchemaRef(Ppoeclients, {partial: true}),
+          schema: getModelSchemaRef(Radacct, {partial: true}),
         },
       },
     })
-    ppoeclients: Ppoeclients,
-    @param.where(Ppoeclients) where?: Where<Ppoeclients>,
+    radacct: Radacct,
+    @param.where(Radacct) where?: Where<Radacct>,
   ): Promise<Count> {
-    return this.ppoeclientsRepository.updateAll(ppoeclients, where);
+    return this.radacctRepository.updateAll(radacct, where);
   }
 
-  @get('/ppoeclients/{id}')
+  @get('/radacct/{id}')
   @response(200, {
-    description: 'Ppoeclients model instance',
+    description: 'Radacct model instance',
     content: {
       'application/json': {
-        schema: getModelSchemaRef(Ppoeclients, {includeRelations: true}),
+        schema: getModelSchemaRef(Radacct, {includeRelations: true}),
       },
     },
   })
   async findById(
     @param.path.number('id') id: number,
-    @param.filter(Ppoeclients, {exclude: 'where'}) filter?: FilterExcludingWhere<Ppoeclients>
-  ): Promise<Ppoeclients> {
-    return this.ppoeclientsRepository.findById(id, filter);
+    @param.filter(Radacct, {exclude: 'where'}) filter?: FilterExcludingWhere<Radacct>
+  ): Promise<Radacct> {
+    return this.radacctRepository.findById(id, filter);
   }
 
-  @patch('/ppoeclients/{id}')
+  @patch('/radacct/{id}')
   @response(204, {
-    description: 'Ppoeclients PATCH success',
+    description: 'Radacct PATCH success',
   })
   async updateById(
     @param.path.number('id') id: number,
     @requestBody({
       content: {
         'application/json': {
-          schema: getModelSchemaRef(Ppoeclients, {partial: true}),
+          schema: getModelSchemaRef(Radacct, {partial: true}),
         },
       },
     })
-    ppoeclients: Ppoeclients,
+    radacct: Radacct,
   ): Promise<void> {
-    await this.ppoeclientsRepository.updateById(id, ppoeclients);
+    await this.radacctRepository.updateById(id, radacct);
   }
 
-  @put('/ppoeclients/{id}')
+  @put('/radacct/{id}')
   @response(204, {
-    description: 'Ppoeclients PUT success',
+    description: 'Radacct PUT success',
   })
   async replaceById(
     @param.path.number('id') id: number,
-    @requestBody() ppoeclients: Ppoeclients,
+    @requestBody() radacct: Radacct,
   ): Promise<void> {
-    await this.ppoeclientsRepository.replaceById(id, ppoeclients);
+    await this.radacctRepository.replaceById(id, radacct);
   }
 
-  @del('/ppoeclients/{id}')
+  @del('/radacct/{id}')
   @response(204, {
-    description: 'Ppoeclients DELETE success',
+    description: 'Radacct DELETE success',
   })
   async deleteById(@param.path.number('id') id: number): Promise<void> {
-    await this.ppoeclientsRepository.deleteById(id);
+    await this.radacctRepository.deleteById(id);
   }
 
-
   // gets expired today
-  @get('/getusername', {
+  @get('/getonline', {
     responses: {
       '200': spec,
     },
@@ -195,58 +173,17 @@ export class PpoeclientsController {
   async getusername(
     @param.query.string('username') username: string,
   ): Promise<any> {
-    var sql = "select * from ppoelist where username = '" + username + "'";
+    var sql = "select distinct count(*) as online from radacct where acctstoptime IS NULL";
 
 
     const data = await this.dataSource.execute(sql)
     return data
   }
-
-
-
-
-
-
-  // gets expired today
-  @get('/autosms/getppplanlist', {
-    responses: {
-      '200': spec,
-    },
-  })
-  async getppoeplanlist(
-    // @param.query.string('attribute') attribute: string,
-  ): Promise<any> {
-    const sql = 'select  planname, plancost, plansetupcost from billing_plans';
-
-
-    const data = await this.dataSource.execute(sql)
-    return data
-  }
-
-
-  // get ppoe clients list
-  @get('/ppoeclients/allppoeclientslist', {
-    responses: {
-      '200': spec,
-    },
-  })
-  async getallppoeplanlist(
-    // @param.query.string('attribute') attribute: string,
-  ): Promise<any> {
-    const sql = 'select * from ppoelist';
-
-
-    const data = await this.dataSource.execute(sql)
-    return data
-  }
-
-
-
 
 
   // select  planname, plancost, plansetupcost from billing_plans
 
-  @post('/ppoeclients/gridviewall', {
+  @post('/radacct/gridviewall', {
     responses: {
       '200': spec,
     },
@@ -264,7 +201,7 @@ export class PpoeclientsController {
 
   buildSql(request: any) {
     const selectSql = this.createSelectSql(request);
-    const fromSql = ' from radius.ppoelist ';
+    const fromSql = ' from radius.onlineclients ';
     const whereSql = this.createWhereSql(request);
     const limitSql = this.createLimitSql(request);
 
@@ -466,5 +403,7 @@ export class PpoeclientsController {
     const currentLastRow = request.startRow + results.length;
     return currentLastRow <= request.endRow ? currentLastRow : -1;
   }
+
+
 
 }

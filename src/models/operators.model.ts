@@ -4,10 +4,10 @@ import {Entity, model, property} from '@loopback/repository';
 export class Operators extends Entity {
   @property({
     type: 'number',
-    required: true,
     precision: 10,
     scale: 0,
-    id: 1,
+    required: false,
+    id: true,
     mysql: {columnName: 'id', dataType: 'int', dataLength: null, dataPrecision: 10, dataScale: 0, nullable: 'N'},
   })
   id: number;
@@ -63,71 +63,78 @@ export class Operators extends Entity {
     type: 'string',
     required: true,
     length: 32,
-    mysql: {columnName: 'department', dataType: 'varchar', dataLength: 32, dataPrecision: null, dataScale: null, nullable: 'N'},
+    mysql: {columnName: 'department', dataType: 'varchar', dataLength: 32, dataPrecision: null, dataScale: null, nullable: 'Y'},
   })
   department: string;
 
   @property({
     type: 'string',
-    required: true,
+    required: false,
     length: 32,
-    mysql: {columnName: 'company', dataType: 'varchar', dataLength: 32, dataPrecision: null, dataScale: null, nullable: 'N'},
+    mysql: {columnName: 'company', dataType: 'varchar', dataLength: 32, dataPrecision: null, dataScale: null, nullable: 'Y'},
   })
   company: string;
 
   @property({
     type: 'string',
-    required: true,
+    required: false,
     length: 32,
-    mysql: {columnName: 'phone1', dataType: 'varchar', dataLength: 32, dataPrecision: null, dataScale: null, nullable: 'N'},
+    default: false,
+    mysql: {columnName: 'phone1', dataType: 'varchar', dataLength: 32, dataPrecision: null, dataScale: null, nullable: 'Y'},
   })
   phone1: string;
 
   @property({
     type: 'string',
-    required: true,
+    required: false,
+    default: false,
     length: 32,
-    mysql: {columnName: 'phone2', dataType: 'varchar', dataLength: 32, dataPrecision: null, dataScale: null, nullable: 'N'},
+    mysql: {columnName: 'phone2', dataType: 'varchar', dataLength: 32, dataPrecision: null, dataScale: null, nullable: 'Y'},
   })
   phone2: string;
 
   @property({
     type: 'string',
-    required: true,
+    required: false,
     length: 32,
-    mysql: {columnName: 'email1', dataType: 'varchar', dataLength: 32, dataPrecision: null, dataScale: null, nullable: 'N'},
+    default: false,
+    mysql: {columnName: 'email1', dataType: 'varchar', dataLength: 32, dataPrecision: null, dataScale: null, nullable: 'Y'},
   })
   email1: string;
 
   @property({
     type: 'string',
-    required: true,
+    required: false,
     length: 32,
-    mysql: {columnName: 'email2', dataType: 'varchar', dataLength: 32, dataPrecision: null, dataScale: null, nullable: 'N'},
+    default: false,
+    mysql: {columnName: 'email2', dataType: 'varchar', dataLength: 32, dataPrecision: null, dataScale: null, nullable: 'Y'},
   })
   email2: string;
 
   @property({
     type: 'string',
-    required: true,
+    required: false,
     length: 32,
-    mysql: {columnName: 'messenger1', dataType: 'varchar', dataLength: 32, dataPrecision: null, dataScale: null, nullable: 'N'},
+    default: false,
+    mysql: {columnName: 'messenger1', dataType: 'varchar', dataLength: 32, dataPrecision: null, dataScale: null, nullable: 'Y'},
   })
   messenger1: string;
 
   @property({
     type: 'string',
-    required: true,
+    required: false,
     length: 32,
-    mysql: {columnName: 'messenger2', dataType: 'varchar', dataLength: 32, dataPrecision: null, dataScale: null, nullable: 'N'},
+    default: false,
+    mysql: {columnName: 'messenger2', dataType: 'varchar', dataLength: 32, dataPrecision: null, dataScale: null, nullable: 'Y'},
   })
   messenger2: string;
 
   @property({
     type: 'string',
-    required: true,
+    required: false,
     length: 128,
-    mysql: {columnName: 'notes', dataType: 'varchar', dataLength: 128, dataPrecision: null, dataScale: null, nullable: 'N'},
+    default: false,
+    mysql: {columnName: 'notes', dataType: 'varchar', dataLength: 128, dataPrecision: null, dataScale: null, nullable: 'Y'},
   })
   notes: string;
 

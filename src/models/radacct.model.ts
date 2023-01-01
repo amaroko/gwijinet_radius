@@ -146,6 +146,33 @@ export class Radacct extends Entity {
   })
   callingstationid: string;
 
+
+  @property({
+    type: 'string',
+    required: true,
+    length: 50,
+    mysql: {columnName: 'NasName', dataType: 'varchar', dataLength: 50, dataPrecision: null, dataScale: null, nullable: 'N'},
+  })
+  NasName: string;
+
+
+  @property({
+    type: 'string',
+    required: true,
+    length: 50,
+    mysql: {columnName: 'Lastname', dataType: 'varchar', dataLength: 50, dataPrecision: null, dataScale: null, nullable: 'N'},
+  })
+  Lastname: string;
+
+
+  @property({
+    type: 'string',
+    required: true,
+    length: 50,
+    mysql: {columnName: 'Firstname', dataType: 'varchar', dataLength: 50, dataPrecision: null, dataScale: null, nullable: 'N'},
+  })
+  Firstname: string;
+
   @property({
     type: 'string',
     required: true,
