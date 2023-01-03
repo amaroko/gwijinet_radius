@@ -26,3 +26,4 @@ export * from './categories.repository';
 export * from './item.repository';
 export * from './employees.repository';
 export * from './suppliers.repository';
+export * from './expenses.repository';

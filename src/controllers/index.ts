@@ -28,3 +28,4 @@ export * from './categories.controller';
 export * from './item.controller';
 export * from './employees.controller';
 export * from './supplier.controller';
+export * from './expenses.controller';

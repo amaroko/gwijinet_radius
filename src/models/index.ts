@@ -154,3 +154,4 @@ export * from './categories.model';
 export * from './item.model';
 export * from './employees.model';
 export * from './suppliers.model';
+export * from './expenses.model';

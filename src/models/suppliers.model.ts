@@ -29,9 +29,9 @@ export class Suppliers extends Entity {
   @property({
     type: 'string',
     length: 128,
-    mysql: {columnName: 'paybilltill', dataType: 'varchar', dataLength: 128, dataPrecision: null, dataScale: null, nullable: 'Y'},
+    mysql: {columnName: 'paybilltillno', dataType: 'varchar', dataLength: 128, dataPrecision: null, dataScale: null, nullable: 'Y'},
   })
-  paybilltill?: string;
+  paybilltillno?: string;
 
   @property({
     type: 'string',
@@ -43,10 +43,16 @@ export class Suppliers extends Entity {
   @property({
     type: 'string',
     length: 128,
-    mysql: {columnName: 'otherinfo', dataType: 'varchar', dataLength: 128, dataPrecision: null, dataScale: null, nullable: 'Y'},
+    mysql: {columnName: 'emailaddress', dataType: 'varchar', dataLength: 128, dataPrecision: null, dataScale: null, nullable: 'Y'},
   })
-  otherinfo?: string;
+  emailaddress?: string;
 
+  @property({
+    type: 'string',
+    length: 128,
+    mysql: {columnName: 'contactpersonname', dataType: 'varchar', dataLength: 128, dataPrecision: null, dataScale: null, nullable: 'Y'},
+  })
+  contactpersonname?: string;
   @property({
     type: 'string',
     length: 128,
