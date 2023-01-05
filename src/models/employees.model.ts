@@ -15,9 +15,9 @@ export class Employees extends Entity {
   @property({
     type: 'string',
     length: 128,
-    mysql: {columnName: 'name', dataType: 'varchar', dataLength: 128, dataPrecision: null, dataScale: null, nullable: 'Y'},
+    mysql: {columnName: 'firstname', dataType: 'varchar', dataLength: 128, dataPrecision: null, dataScale: null, nullable: 'Y'},
   })
-  name?: string;
+  firstname?: string;
 
   @property({
     type: 'string',
@@ -29,9 +29,16 @@ export class Employees extends Entity {
   @property({
     type: 'string',
     length: 128,
-    mysql: {columnName: 'phonenumber', dataType: 'varchar', dataLength: 128, dataPrecision: null, dataScale: null, nullable: 'Y'},
+    mysql: {columnName: 'designation', dataType: 'varchar', dataLength: 128, dataPrecision: null, dataScale: null, nullable: 'Y'},
   })
-  phonenumber?: string;
+  designation?: string;
+
+  @property({
+    type: 'string',
+    length: 128,
+    mysql: {columnName: 'idnumber', dataType: 'varchar', dataLength: 128, dataPrecision: null, dataScale: null, nullable: 'Y'},
+  })
+  idnumber?: string;
 
   @property({
     type: 'string',
@@ -39,6 +46,90 @@ export class Employees extends Entity {
     mysql: {columnName: 'emailaddress', dataType: 'varchar', dataLength: 128, dataPrecision: null, dataScale: null, nullable: 'Y'},
   })
   emailaddress?: string;
+
+  @property({
+    type: 'string',
+    length: 128,
+    mysql: {columnName: 'phonenumber', dataType: 'varchar', dataLength: 128, dataPrecision: null, dataScale: null, nullable: 'Y'},
+  })
+  phonenumber?: string;
+
+  @property({
+    type: 'string',
+    length: 128,
+    mysql: {columnName: 'currentresidence', dataType: 'varchar', dataLength: 128, dataPrecision: null, dataScale: null, nullable: 'Y'},
+  })
+  currentresidence?: string;
+
+  @property({
+    type: 'string',
+    length: 128,
+    mysql: {columnName: 'permanentresidence', dataType: 'varchar', dataLength: 128, dataPrecision: null, dataScale: null, nullable: 'Y'},
+  })
+  permanentresidence?: string;
+
+  @property({
+    type: 'string',
+    length: 128,
+    mysql: {columnName: 'insuranceno', dataType: 'varchar', dataLength: 128, dataPrecision: null, dataScale: null, nullable: 'Y'},
+  })
+  insuranceno?: string;
+
+  @property({
+    type: 'string',
+    length: 128,
+    mysql: {columnName: 'grosssalary', dataType: 'varchar', dataLength: 128, dataPrecision: null, dataScale: null, nullable: 'Y'},
+  })
+  grosssalary?: string;
+
+  @property({
+    type: 'string',
+    length: 128,
+    mysql: {columnName: 'firstnamenok', dataType: 'varchar', dataLength: 128, dataPrecision: null, dataScale: null, nullable: 'Y'},
+  })
+  firstnamenok?: string;
+
+  @property({
+    type: 'string',
+    length: 128,
+    mysql: {columnName: 'othernamesnok', dataType: 'varchar', dataLength: 128, dataPrecision: null, dataScale: null, nullable: 'Y'},
+  })
+  othernamesnok?: string;
+
+  @property({
+    type: 'string',
+    length: 128,
+    mysql: {columnName: 'idnumbernok', dataType: 'varchar', dataLength: 128, dataPrecision: null, dataScale: null, nullable: 'Y'},
+  })
+  idnumbernok?: string;
+
+  @property({
+    type: 'string',
+    length: 128,
+    mysql: {columnName: 'contactnok', dataType: 'varchar', dataLength: 128, dataPrecision: null, dataScale: null, nullable: 'Y'},
+  })
+  contactnok?: string;
+
+  @property({
+    type: 'string',
+    length: 128,
+    mysql: {columnName: 'emailaddressnok', dataType: 'varchar', dataLength: 128, dataPrecision: null, dataScale: null, nullable: 'Y'},
+  })
+  emailaddressnok?: string;
+
+  @property({
+    type: 'string',
+    length: 128,
+    mysql: {columnName: 'currentrnok', dataType: 'varchar', dataLength: 128, dataPrecision: null, dataScale: null, nullable: 'Y'},
+  })
+  currentrnok?: string;
+
+  @property({
+    type: 'string',
+    length: 128,
+    mysql: {columnName: 'permanentresidencenok', dataType: 'varchar', dataLength: 128, dataPrecision: null, dataScale: null, nullable: 'Y'},
+  })
+  permanentresidencenok?: string;
 
   @property({
     type: 'string',

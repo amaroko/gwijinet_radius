@@ -41,6 +41,21 @@ export class Expenses extends Entity {
   paidto?: string;
 
   @property({
+    type: 'string',
+    length: 128,
+    mysql: {columnName: 'paybilltillno', dataType: 'varchar', dataLength: 128, dataPrecision: null, dataScale: null, nullable: 'Y'},
+  })
+  paybilltillno?: string;
+
+
+  @property({
+    type: 'string',
+    length: 128,
+    mysql: {columnName: 'contactpersonname', dataType: 'varchar', dataLength: 128, dataPrecision: null, dataScale: null, nullable: 'Y'},
+  })
+  contactpersonname?: string;
+
+  @property({
     type: 'number',
     length: 128,
     mysql: {columnName: 'quantity', dataType: 'varchar', dataLength: 128, dataPrecision: null, dataScale: null, nullable: 'Y'},

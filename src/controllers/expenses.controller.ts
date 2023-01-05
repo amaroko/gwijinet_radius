@@ -19,11 +19,28 @@ import {
 } from '@loopback/rest';
 import {Expenses} from '../models';
 import {ExpensesRepository} from '../repositories';
+import {MysqlDataSource} from '../datasources';
+import {inject} from '@loopback/core';
+const spec = {
+  content: {
+    'application/json': {
+      schema: {
+        type: 'object',
+        properties: {
+          message: {
+            type: 'string',
+          },
+        },
+      },
+    },
+  },
+};
 
 export class ExpensesController {
   constructor(
     @repository(ExpensesRepository)
     public expensesRepository : ExpensesRepository,
+    @inject('datasources.mysql') public dataSource: MysqlDataSource,
   ) {}
 
   @post('/expenses')
@@ -147,4 +164,21 @@ export class ExpensesController {
   async deleteById(@param.path.number('id') id: number): Promise<void> {
     await this.expensesRepository.deleteById(id);
   }
+
+
+  //clientactionplan
+  @get('/expenses/today', {
+    responses: {
+      '200': spec,
+    },
+  })
+  async clientactionplan(
+  ): Promise<any> {
+    var sql1 = "SELECT * FROM expenses WHERE cast(datecreated as Date) = cast(Date(Now()) as Date)"
+
+    const data = await this.dataSource.execute(sql1)
+    return data
+  }
+
+
 }
